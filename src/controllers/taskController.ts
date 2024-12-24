@@ -48,3 +48,27 @@ export const deleteTask = async (req: Request, res: Response) => {
   }
 };
 
+// Atualizar tarefa
+export const updateTask = async (req: Request, res: Response): Promise<void> => {
+  const { id } = req.params;
+  const { title, description, time, status } = req.body;
+
+  if (!title || !description || !time || !status) {
+    res.status(400).json({ error: 'Title, description, time, and status are required.' });
+    return;
+  }
+
+  try {
+    const updated = await TaskModels.update(Number(id), { title, description, time, status });
+    if (updated) {
+      res.json({ message: `Task with ID ${id} updated successfully` });
+    } else {
+      res.status(404).json({ error: `Task with ID ${id} not found` });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to update task' });
+  }
+};
+
+
+

@@ -30,6 +30,18 @@ class taskModels {
       const [result] = await pool.query('DELETE FROM tasks WHERE id = ?', [id]);
       return (result as any).affectedRows > 0;
     }
+
+     // Atualizar um usuário por ID
+    static async update(id: number, task: Task): Promise<boolean> {
+    const [result] = await pool.query('UPDATE tasks SET title = ?, description = ?, time = ?, status = ? WHERE id = ?', [
+      task.title,
+      task.description,
+      task.time,
+      task.status,
+      id,
+    ]);
+    return (result as any).affectedRows > 0;
+  }
 }  
 
 export default taskModels;
