@@ -3,6 +3,7 @@ import TaskModels, {Task} from '../models/taskModels';
 import taskModels from '../models/taskModels';
 
 
+
 // Get all tasks
 export const getTasks = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -68,7 +69,23 @@ export const updateTask = async (req: Request, res: Response): Promise<void> => 
   } catch (error) {
     res.status(500).json({ error: 'Failed to update task' });
   }
+
 };
 
+export const getTaskById = async (req: Request, res: Response): Promise<void> => {
+  const { id } = req.params;
+
+  try {
+    const task = await taskModels.findById(Number(id));
+    if (task) {
+      res.status(200).json(task);
+    } else {
+      res.status(404).json({ message: `Task with ID ${id} not found` });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error fetching task', error });
+  }
+};
 
 
