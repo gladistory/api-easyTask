@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Execute o comando de build
-RUN npm run build
+RUN npm run dev
 
 # Configure o comando padrão
 CMD ["node", "src/index.js"]
