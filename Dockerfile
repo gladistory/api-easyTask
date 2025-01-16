@@ -1,20 +1,23 @@
-# Use a imagem oficial do Node.js como base
-FROM node:16
+# Use uma imagem Node.js com suporte à última versão
+FROM node:18
 
-# Defina o diretório de trabalho dentro do contêiner
-WORKDIR /dist
+# Configurar o diretório de trabalho no container
+WORKDIR /app
 
-# Copie os arquivos package.json e package-lock.json para instalar as dependências
+# Copiar os arquivos de dependência primeiro (para cache eficiente)
 COPY package*.json ./
 
-# Instale as dependências do projeto
+# Instalar as dependências
 RUN npm install
 
-# Copie todo o código da aplicação para o contêiner
+# Instalar o ts-node globalmente
+RUN npm install -g ts-node
+
+# Copiar o restante dos arquivos para o container
 COPY . .
 
-# Exponha a porta em que o servidor da API está rodando
-EXPOSE 11863
+# Expor a porta usada pela aplicação
+EXPOSE 3000
 
-# Defina o comando para rodar a aplicação
-CMD ["npm", "start"]
+# Comando para iniciar o servidor com ts-node
+CMD ["ts-node", "src/server.ts"]
