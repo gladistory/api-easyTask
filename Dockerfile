@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Exponha a porta em que o servidor da API está rodando
-EXPOSE 3002
+EXPOSE 11863
 
 # Defina o comando para rodar a aplicação
 CMD ["npm", "start"]
