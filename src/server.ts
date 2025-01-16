@@ -17,6 +17,6 @@ const PORT = Number(process.env.PORT) || 3306;
 
 // Iniciar o servidor
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}/api/tasks`);
+  console.log(`Server running on http://api-easytask-production-848c.up.railway.app`);
 });
 
