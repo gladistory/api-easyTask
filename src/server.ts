@@ -14,9 +14,9 @@ app.use((req, res, next) => {
 
 // Definir a porta, com fallback para 3306
 const PORT = Number(process.env.PORT) || 3306;
-
+/*
 // Iniciar o servidor
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}/api/tasks`);
 });
-
+*/
