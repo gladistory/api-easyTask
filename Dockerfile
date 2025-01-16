@@ -1,20 +1,20 @@
-# Use a imagem Node.js como base
-FROM node:16
+# Use a imagem oficial do Node.js como base
+FROM node:18
 
-# Defina o diretório de trabalho
-WORKDIR /src
+# Defina o diretório de trabalho dentro do contêiner
+WORKDIR /app
 
-# Copie os arquivos de dependências para o container
+# Copie os arquivos package.json e package-lock.json para instalar as dependências
 COPY package*.json ./
 
-# Instale as dependências
+# Instale as dependências do projeto
 RUN npm install
 
-# Copie o restante dos arquivos
+# Copie todo o código da aplicação para o contêiner
 COPY . .
 
-# Execute o build
-RUN npm run build
+# Exponha a porta em que o servidor da API está rodando
+EXPOSE 3002
 
-# Comando padrão para execução
-CMD CMD ["npm", "start"]
+# Defina o comando para rodar a aplicação
+CMD ["npm", "start"]
