@@ -2,7 +2,7 @@
 FROM node:16
 
 # Defina o diretório de trabalho
-WORKDIR /app
+WORKDIR /src
 
 # Copie os arquivos de dependências para o container
 COPY package*.json ./
@@ -17,4 +17,4 @@ COPY . .
 RUN npm run build
 
 # Comando padrão para execução
-CMD ["node", "dist/index.js"]
+CMD CMD ["npm", "start"]
