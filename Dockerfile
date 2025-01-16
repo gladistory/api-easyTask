@@ -17,7 +17,7 @@ RUN npm install -g ts-node
 COPY . .
 
 # Expor a porta usada pela aplicação
-EXPOSE 3000
+EXPOSE 11863
 
 # Comando para iniciar o servidor com ts-node
 CMD ["ts-node", "src/server.ts"]
