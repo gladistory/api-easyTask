@@ -1,17 +1,11 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",
-    "target": "ESNext",
-    "moduleResolution": "nodenext",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
+    "target": "ES6",
+    "module": "commonjs",
     "outDir": "./dist",
-    "baseUrl": "./",
-    "paths": {
-      "*": ["node_modules/*"]
-    }
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true
   },
-  "include": ["src/**/*.ts", "src/server.js"],
   "exclude": ["node_modules"]
 }
