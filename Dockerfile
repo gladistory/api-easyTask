@@ -2,7 +2,7 @@
 FROM node:16
 
 # Defina o diretório de trabalho dentro do contêiner
-WORKDIR /app
+WORKDIR /dist
 
 # Copie os arquivos package.json e package-lock.json para instalar as dependências
 COPY package*.json ./
