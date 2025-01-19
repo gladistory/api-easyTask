@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 });
 
 // Definir a porta, com fallback para 3306
-const PORT = Number(process.env.PORT) || 3306;
+const PORT = Number(11863) || 8080;
 
 // Iniciar o servidor
 app.listen(PORT, () => {
