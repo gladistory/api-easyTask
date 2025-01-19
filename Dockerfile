@@ -17,7 +17,7 @@ RUN npm install -g ts-node
 COPY . .
 
 # Expor a porta usada pela aplicação
-EXPOSE 3000
+EXPOSE 3306
 
 ENV MYSQL_HOST=monorail.proxy.rlwy.net
 ENV MYSQL_USER=root
