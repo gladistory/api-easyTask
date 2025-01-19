@@ -17,7 +17,13 @@ RUN npm install -g ts-node
 COPY . .
 
 # Expor a porta usada pela aplicação
-EXPOSE 11863
+EXPOSE 8080
+
+ENV PORT=11863
+ENV MYSQL_HOST='monorail.proxy.rlwy.net'
+ENV MYSQL_USER='root'
+ENV MYSQL_ROOT_PASSWORD='IBAkeCuaqLHLnkAMNYqQXCQwkFrMCFlq'
+ENV MYSQL_DB=railway
 
 # Comando para iniciar o servidor com ts-node
 CMD ["ts-node", "src/server.ts"]
