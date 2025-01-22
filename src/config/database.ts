@@ -1,27 +1,27 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
-dotenv.config();
 
 dotenv.config(); // Carrega as variáveis de ambiente do arquivo .env
 
-// Criação do pool de conexões
-const pool = mysql.createPool({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_ROOT_PASSWORD,
-  database: process.env.MYSQL_DB,
-  port: Number(process.env.PORT) || 3001,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-  connectTimeout: 30000,
-});
+// Obtém a URL do MySQL do arquivo .env
+const mysqlUrl = process.env.MYSQL_URL;
 
+if (!mysqlUrl) {
+  throw new Error('A variável de ambiente MYSQL_URL não está definida.');
+}
+
+// Cria o pool de conexões usando a URL
+const pool = mysql.createPool(mysqlUrl);
+
+// Testando a conexão
 pool.getConnection()
-  .then(() => console.log('Connected to MySQL database'))
+  .then((connection) => {
+    console.log('Connected to MySQL database using public URL');
+    connection.release(); // Libera a conexão de volta ao pool
+  })
   .catch((err) => {
     console.error('Failed to connect to MySQL:', err.message);
-    process.exit(1); // Fecha a aplicação em caso de falha
+    process.exit(1); // Finaliza a aplicação caso a conexão falhe
   });
 
 export default pool;
