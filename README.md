@@ -1,5 +1,7 @@
 
-# Passo a Passo para Configurar a API
+# Passo a Passo para Configurar a API localmente
+
+# API Pública: https://api-easytask-production-3b67.up.railway.app/api/tasks
 
 ### 1. Inicialize o projeto 
 Certifique-se de que o **Node.js** e o **npm** (ou **yarn**) estejam instalados. Em seguida, clone o repositório com o comando:
