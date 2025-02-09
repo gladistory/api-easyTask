@@ -1,7 +1,7 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 
-dotenv.config(); // Carrega as variáveis de ambiente do arquivo .env
+dotenv.config();
 
 // Obtém a URL do MySQL do arquivo .env
 const mysqlUrl = process.env.MYSQL_URL;
@@ -17,7 +17,7 @@ const pool = mysql.createPool(mysqlUrl);
 pool.getConnection()
   .then((connection) => {
     console.log('Connected to MySQL database using public URL');
-    connection.release(); // Libera a conexão de volta ao pool
+    connection.release();
   })
   .catch((err) => {
     console.error('Failed to connect to MySQL:', err.message);

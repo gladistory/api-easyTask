@@ -1,6 +1,5 @@
 import express, { Application } from 'express';
 import cors from 'cors';
-import userRoutes from './routes/userRoutes';
 import taskRoutes from './routes/taskRoutes';
 
 const app: Application = express();
@@ -11,7 +10,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api/users', userRoutes);
 app.use('/api/tasks', taskRoutes);
 
 app.get('/api', (req, res) => {
