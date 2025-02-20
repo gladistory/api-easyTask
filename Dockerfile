@@ -11,7 +11,7 @@ COPY package.json package-lock.json* ./
 ENV NODE_ENV=production
 
 # Instalar apenas as dependências necessárias
-RUN npm ci --only=production
+RUN npm install -g ts-node && chmod +x /usr/local/bin/ts-node
 
 # Copiar o restante dos arquivos para o container
 COPY . .
