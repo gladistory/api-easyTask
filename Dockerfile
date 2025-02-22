@@ -1,17 +1,17 @@
-# Use uma imagem Node.js com suporte à última versão
-FROM node:18
+# Use uma imagem Node.js com suporte à última versão LTS
+FROM node:18-alpine
 
 # Configurar o diretório de trabalho no container
 WORKDIR /app
 
-# Copiar os arquivos de dependência primeiro (para cache eficiente)
-COPY package*.json ./
+# Copiar apenas os arquivos necessários para instalação das dependências
+COPY package.json package-lock.json* ./
 
-# Instalar as dependências
-RUN npm install
+# Definir a variável de ambiente para produção
+ENV NODE_ENV=production
 
-# Instalar o ts-node globalmente
-RUN npm install -g ts-node
+# Instalar apenas as dependências necessárias
+RUN npm install -g ts-node && chmod +x /usr/local/bin/ts-node
 
 # Copiar o restante dos arquivos para o container
 COPY . .
@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 11863
 
 # Comando para iniciar o servidor com ts-node
-CMD ["ts-node", "src/server.ts"]
+CMD ["npx", "ts-node", "src/server.ts"]
