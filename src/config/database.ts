@@ -1,10 +1,11 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 
-dotenv.config();
 
 // Obtém a URL do MySQL do arquivo .env
+
 const mysqlUrl = process.env.MYSQL_URL;
+
 
 if (!mysqlUrl) {
   throw new Error('A variável de ambiente MYSQL_URL não está definida.');

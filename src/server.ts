@@ -12,8 +12,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// Definir a porta, com fallback para 3000
-const PORT = Number(process.env.PORT) || 3000;
+// Definir a porta, com fallback para 3001
+const PORT = Number(process.env.PORT) || 3001;
 
 // Iniciar o servidor
 app.listen(PORT, () => {
