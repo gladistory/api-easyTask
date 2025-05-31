@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/tasks', taskRoutes);
 
 app.get('/api', (req, res) => {
-    res.send('API is working. Use /api/users to interact with the endpoints.');
-  });
+  res.send('API is working. Use /api/tasks to interact with the endpoints.');
+});
 
 export default app;
