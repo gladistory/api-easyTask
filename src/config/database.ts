@@ -5,9 +5,9 @@ dotenv.config();
 
 // Criação do pool de conexões
 const pool = mysql.createPool({
-  host: process.env.MYSQL_HOST || '127.0.0.1',
-  user: process.env.MYSQL_USER || 'root',
-  database: process.env.MYSQL_DB || 'api_teste',
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  database: process.env.MYSQL_DB,
 });
 
 pool.getConnection()
