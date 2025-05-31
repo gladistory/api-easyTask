@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import TaskModels, {Task} from '../models/taskModels';
-import taskModels from '../models/taskModels';
+import TaskModels from '../../models/taskModels';
+import taskModels from '../../models/taskModels';
 
 
 
